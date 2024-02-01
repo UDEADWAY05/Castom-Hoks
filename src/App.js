@@ -1,17 +1,26 @@
-import './App.css';
-import { useWindowScroll } from './useWindowScroll';
+import { useToggle } from './useToggle';
 
 function App() {
-  const [scroll, scrollTo] = useWindowScroll();
+  const [value, toggle] = useToggle(['blue', 'orange', 'cyan', 'teal']);
 
   return (
-    <div className='scrollDiv'>
-      <p>
-        Scroll position x: {scroll.x}, y: {scroll.y}
-      </p>
-      <button onClick={() => scrollTo({ y: 0 })}>Scroll to top</button>
+    <div>
+        <button onClick={() => toggle()}>
+            {value}
+        </button>
     </div>
   );
 }
+
+// Еще примеры использования
+
+// const [value, toggle] = useToggle(['light', 'dark']);
+
+// toggle(); // -> value === 'light'
+// toggle(); // -> value === 'dark'
+
+// Так же можно передать конкретное значение и тогда 
+// value станет одним из значений
+// toggle('dark'); // -> value === 'dark'
 
 export default App;
